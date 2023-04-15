@@ -5,7 +5,7 @@ from argparse import _ArgumentGroup
 
 from cv2 import imread, imwrite
 
-from services.image_transformer import transform
+from src.image_transformer import transform
 
 
 def get_or_create_output_dir(img_path: pathlib.Path):
@@ -16,9 +16,9 @@ def get_or_create_output_dir(img_path: pathlib.Path):
 
 
 def add_command(subparsers: _ArgumentGroup):
-    parser = subparsers.add_parser('process')
+    parser = subparsers.add_parser('transform')
     parser.add_argument('-i', '--image',
-        help='path of the image to be processed',
+        help='path of the image to be processed/transformed',
         type=str,
         metavar='',
         required=True
