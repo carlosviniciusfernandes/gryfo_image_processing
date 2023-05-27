@@ -1,12 +1,12 @@
 import argparse
 
-import cli
+import ui.cli as cli
 
 
 def load_argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog = 'Gryfo Image Processing',
-        description = 'desc'
+        description = 'This is a package for image processing. Get started using the --help command'
     )
     parser.add_argument('-l', '--list', help='list available commands', action='store_true')
     subparsers = parser.add_subparsers(help='name of the commands for execution', metavar='command', dest='command')

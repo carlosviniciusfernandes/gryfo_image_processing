@@ -1,8 +1,8 @@
 from typing import Callable
 
-from api.adapter import RequestAdapter
-from api.protocols import HTTPRequestHandler
-from api.exceptions import APIException
+from .adapter import RequestAdapter
+from .protocols import HTTPRequestHandler
+from .exceptions import APIException
 
 
 class APIMiddleware:

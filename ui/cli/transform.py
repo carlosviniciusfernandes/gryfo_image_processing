@@ -5,7 +5,7 @@ from argparse import _ArgumentGroup
 
 from cv2 import imread, imwrite
 
-from src.image_transformer import transform
+from core.image_transformer import transform
 
 
 def get_or_create_output_dir(img_path: pathlib.Path):
@@ -26,9 +26,9 @@ def add_command(subparsers: _ArgumentGroup):
     parser.add_argument('-o', '--operations',
         nargs='+',
         type=str,
-        help=f'Operations to perform',
+        help=f'Chain of operations to perform on the image. Available options: [flip_horizontal, flip_vertical, flip_vertical, blur, edge_detect, draw_contours]',
         metavar='',
-        default=[]
+        default=[],
     )
 
 

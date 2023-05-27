@@ -1,4 +1,4 @@
-from api.controller import transform_image
+from .controller import transform_image
 
 router = {
     'POST': {

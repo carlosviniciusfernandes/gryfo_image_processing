@@ -4,7 +4,7 @@ DEFAULT_HOST = '127.0.0.1'
 from http.server import HTTPServer
 from argparse import _ArgumentGroup
 
-from api.handler import RequestHandler
+from ui.api.handler import RequestHandler
 
 
 def add_command(subparsers: _ArgumentGroup):

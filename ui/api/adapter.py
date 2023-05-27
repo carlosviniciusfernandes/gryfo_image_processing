@@ -3,7 +3,7 @@ import json
 from functools import cached_property
 from requests_toolbelt import MultipartDecoder
 
-from api.protocols import HTTPRequestHandler
+from .protocols import HTTPRequestHandler
 
 
 class RequestAdapter:

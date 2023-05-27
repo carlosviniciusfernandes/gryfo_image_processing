@@ -1,7 +1,7 @@
 import pathlib
 
-import cli.transform as transform
-import cli.serve as serve
+from . import transform
+from . import serve
 
 dir = pathlib.Path(__file__).resolve().parent
 files_in_basepath = dir.iterdir()

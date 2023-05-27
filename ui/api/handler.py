@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 
-from api.router import router
+from .router import router
 
 
 class RequestHandler(BaseHTTPRequestHandler):

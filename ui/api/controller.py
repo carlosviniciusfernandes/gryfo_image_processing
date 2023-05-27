@@ -5,9 +5,9 @@ import numpy as np
 
 from PIL import Image
 
-from api.exceptions import APIException
-from api.middleware import APIMiddleware
-from src.image_transformer import transform
+from .exceptions import APIException
+from .middleware import APIMiddleware
+from core.image_transformer import transform
 
 
 def _b64_to_ndarray(b64: str | bytes) -> np.ndarray:

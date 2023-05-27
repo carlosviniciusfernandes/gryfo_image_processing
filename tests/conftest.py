@@ -4,7 +4,7 @@ import pathlib
 
 from multiprocessing import Process
 
-from cli.serve import run as serve
+from ui.cli.serve import run as serve
 
 dir = pathlib.Path(__file__).resolve().parent
 
