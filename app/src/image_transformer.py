@@ -40,7 +40,6 @@ def draw_contours(img: cv2.Mat) -> cv2.Mat:
 
 
 def transform(img: cv2.Mat, operations: list[str]) -> cv2.Mat:
-
     result = img.copy()
     for operation in operations:
 

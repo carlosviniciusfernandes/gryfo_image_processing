@@ -1,8 +1,25 @@
-# serve a post endpoint for that take an image b64 (or otherformatt) and a ordered list of operation to perform
-# either stores the image and have another endpoint for download, or return the image
+DEFAULT_PORT = 8000
+DEFAULT_HOST = '127.0.0.1'
 
-def add_command(*args, **kwargs):
-    pass
+from http.server import HTTPServer
+from argparse import _ArgumentGroup
+
+from api.handler import RequestHandler
+
+
+def add_command(subparsers: _ArgumentGroup):
+    parser = subparsers.add_parser('serve')
+
 
 def run(*args, **kwargs):
-    pass
+    ADDRESS = DEFAULT_HOST
+    PORT = DEFAULT_PORT
+
+    with HTTPServer((ADDRESS, PORT), RequestHandler) as server:
+        try:
+            print(f'Starting http server at http://{ADDRESS}:{PORT}/...')
+            print(f'Quit with Ctrl+C')
+            server.serve_forever()
+        except KeyboardInterrupt:
+            server.server_close()
+            print('\ngood bye!')

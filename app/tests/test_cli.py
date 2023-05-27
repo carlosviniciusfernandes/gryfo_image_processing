@@ -8,7 +8,7 @@ TEST_IMG = 'lenna'
 IMG_FORMAT = 'png'
 
 
-def test_image_transform(IMG_DIR):
+def test_image_transform_via_cli(IMG_DIR):
     expected_output_path = pathlib.Path((f'{IMG_DIR}/output/{TEST_IMG}#edge_detect#flip_horizontal.{IMG_FORMAT}'))
 
     process = Popen(
@@ -18,6 +18,7 @@ def test_image_transform(IMG_DIR):
 
     assert expected_output_path.exists()
     diff = subtract(imread(f'{IMG_DIR}/{TEST_IMG}_edges_flipped.{IMG_FORMAT}'), imread(str(expected_output_path)))
-    assert diff.sum() == 0 # images are identical
-
-    expected_output_path.unlink()
+    try:
+        assert diff.sum() == 0 # images are identical
+    finally:
+        expected_output_path.unlink()
