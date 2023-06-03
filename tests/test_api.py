@@ -47,5 +47,42 @@ def test_image_transfom_via_api__multipart_form_data(API_URL, IMG_DIR):
     finally:
         output_path.unlink()
 
-# TODO add a test to check image color channels are preserved during transformations (unlike cli, there are multiple conversions using the API)
-# TODO add a test for when no image is provided, it must return application/json with code 400 and correct error message
+
+def test_image_transfom_via_api__keeps_image_channels(API_URL, LENNA_JSON, BLURRED_LENNA_JSON):
+    headers = {'Content-Type': 'application/json'}
+    payload = {
+        **LENNA_JSON,
+        'operations': ['blur']
+    }
+
+    response = requests.post(f'{API_URL}/image/transform', json=payload, headers=headers)
+
+    assert response.status_code == 200
+    assert response.headers['Content-Type'] == 'application/json'
+    assert response.json()['image'] == BLURRED_LENNA_JSON['image']
+
+
+def test_image_transfom_via_api__no_image_bad_request(API_URL):
+    headers = {'Content-Type': 'application/json'}
+    payload = {
+        'image': '',
+        'operations': ['flip_horizontal', 'edge_detect']
+    }
+
+    response = requests.post(f'{API_URL}/image/transform', json=payload, headers=headers)
+
+    assert response.status_code == 400
+    assert 'No image provided' in response.json().get('message')
+
+
+def test_image_transfom_via_api__empty_operations_bad_request(API_URL):
+    headers = {'Content-Type': 'application/json'}
+    payload = {
+        'image': 'blur',
+        'operations': []
+    }
+
+    response = requests.post(f'{API_URL}/image/transform', json=payload, headers=headers)
+
+    assert response.status_code == 400
+    assert 'No operations' in response.json().get('message')

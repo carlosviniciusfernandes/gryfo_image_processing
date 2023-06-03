@@ -32,4 +32,4 @@ class APIMiddleware:
         except APIException as err:
             request.send_response(err.code)
             request.set_headers()
-            adapter.write_response({'error': f'{err}'})
+            adapter.write_response({'message': f'{err}'})

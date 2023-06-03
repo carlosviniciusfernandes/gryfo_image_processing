@@ -37,3 +37,8 @@ def LENNA_JSON(IMG_DIR) -> dict:
 def EDGE_FLIPPED_LENNA_JSON(IMG_DIR) -> dict:
     with open(f'{IMG_DIR}/lenna_edges_flipped.json', 'r') as f:
         return json.load(f)
+
+@pytest.fixture(scope='session')
+def BLURRED_LENNA_JSON(IMG_DIR) -> dict:
+    with open(f'{IMG_DIR}/lenna_blurred.json', 'r') as f:
+        return json.load(f)

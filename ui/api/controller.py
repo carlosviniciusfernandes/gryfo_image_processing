@@ -37,6 +37,9 @@ def transform_image(image: str | bytes = '', operations: list[str] = [], output_
     if not image:
         raise APIException('No image provided', code=400)
 
+    if not operations:
+        raise APIException('No operations to perfom. Provide at least 1 operation for image transformation', code=400)
+
     new_image = transform(_b64_to_ndarray(image), operations)
 
     _, buffer = cv2.imencode('.png', new_image)

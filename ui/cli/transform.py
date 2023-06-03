@@ -28,13 +28,17 @@ def add_command(subparsers: _ArgumentGroup):
         type=str,
         help=f'Chain of operations to perform on the image. Available options: [flip_horizontal, flip_vertical, flip_vertical, blur, edge_detect, draw_contours]',
         metavar='',
-        default=[],
+        required=True
     )
 
 
 def run(*args, **kwargs) -> None:
     img_path: pathlib.Path = pathlib.Path(kwargs.get('image'))
     operations: list[str] = kwargs.get('operations')
+
+    if not img_path.exists():
+        print(f'path: {img_path} -> No image found.')
+        return
 
     img = imread(str(img_path))
     result = transform(img, operations)
