@@ -26,7 +26,7 @@ def add_command(subparsers: _ArgumentGroup):
     parser.add_argument('-o', '--operations',
         nargs='+',
         type=str,
-        help=f'Chain of operations to perform on the image. Available options: [flip_horizontal, flip_vertical, flip_vertical, blur, edge_detect, draw_contours]',
+        help=f'Chain of operations to perform on the image. Available options: [flip_horizontal, flip_vertical, invert_colors, blur, edge_detect, draw_contours]',
         metavar='',
         required=True
     )

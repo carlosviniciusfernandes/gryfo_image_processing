@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "gryfo-image-processing"
+name = "image-transformer"
 version = "0.1.0"
 description = "Gryfo's challenge for setting up basic image processing sequence"
 authors = ["Carlos Fernandes"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "gryfo_image_processing"}]
+packages = [{include = "image-transformer"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
