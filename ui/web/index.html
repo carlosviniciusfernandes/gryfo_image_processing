@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Transformer</title>
+    <link rel="stylesheet" href="./style.css"></link>
+</head>
+<body>
+    <header class="header" >
+        <h2 style="margin: auto; padding: 15px;">Image Transformer</h2>
+    </header>
+    <form id="form" enctype="multipart/form-data" style="padding-top: 8vh;">
+        <input id="img-input" type="file" accept="image/*" class="btn"/>
+        <div id="img-preview" class="container"></div>
+        <div id="img-options" class="container">
+            <input type="checkbox" value="flip_horizontal">Horizontal Flip</input>
+            <input type="checkbox" value="flip_vertical">Vertical Flip</input>
+            <input type="checkbox" value="invert_colors">Invert Colors (negative)</input>
+            <input type="checkbox" value="blur">Blur</input>
+            <input type="checkbox" value="edge_detect">Edge Detecttion</input>
+            <input type="checkbox" value="draw_contours">Draw Contours</input>
+        </div>
+        <input type="submit" class="btn">
+        <div id="img-transformed" class="container"></div>
+    </form>
+    <footer class="footer">
+        Carlos Fernandes 2023
+    </footer>
+</body>
+<script src="main.js"></script>
+</html>
